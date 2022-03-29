@@ -1,0 +1,25 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/*
+ * Global layout stuff
+ */
+
+
+header {
+  height: 400px;
+  width: 100%;
+}
+
+.avatar_and_name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #9b843e63;
+  background-image: url("https://www.transparenttextures.com/patterns/black-paper.png");
+}
