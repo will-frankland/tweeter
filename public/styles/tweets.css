@@ -16,7 +16,13 @@ html {
    padding: 0 1rem 1rem 1rem;
    margin: 2rem 0 0 0;
    border: 2px solid #48453c;
- }
+   transition: box-shadow .3s;
+   box-shadow: 0 0 11px rgba(33,33,33,.2); 
+
+  }
+  .all-tweets-section:hover {
+    box-shadow: 5px 3px 5px 4px dimgrey;
+  }
 
  .tweets header {
    display: flex;
@@ -46,4 +52,19 @@ html {
    display: flex;
    justify-content: flex-end;
    border-top: solid;
+   column-gap: 15px;
+ }
+
+
+
+ .fa-solid.fa-font-awesome:hover {
+  color: rgb(196, 196, 25);
+ }
+ 
+ .fa-solid.fa-retweet:hover {
+  color: blue;
+ }
+ 
+ .fa-regular.fa-heart:hover {
+  color: red;
  }
