@@ -23,7 +23,7 @@
 
   <!-- External JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+  <script src="http://timeago.yarp.com/jquery.timeago.js"></script>
   <!-- App JS -->
   <script type="text/javascript" src="/scripts/client.js"></script>
   <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
@@ -50,7 +50,7 @@
   <main class="container">
     <section class="new-tweet">
       <h2>Compose Tweet</h2>
-      <form action="/tweets/" method="POST">
+      <form id="tweet-form" action="/tweets/" method="POST">
         <!-- <label for="tweet-text">What are you humming about?</label> -->
         <textarea placeholder="Tell us what you're thinking ..." name="text" id="tweet-text"></textarea>
         <div class="tweet_button">
@@ -72,7 +72,8 @@
           </p>
         </header>
         <p class="tweet-content">This is my first tweet -- body</p>
-        <footer>
+        <footer class="tweet-footer">
+          <p class="timestamp">Timestamp</p>
           <div class="logo-set">
             <i class="fa-solid fa-font-awesome"></i>
             <i class="fa-solid fa-retweet"></i>

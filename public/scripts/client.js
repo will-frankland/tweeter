@@ -3,84 +3,63 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-$(document).ready(function () {
-  const tweetData = {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  }
 
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd"
-      },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ]
-
-  // const $tweet = createTweetElement(tweetData);
-
-  // // Test / driver code (temporary)
-  // console.log($tweet); // to see what it looks like
-  // $('#tweets-container').append($tweet);
-
-  const createTweetElement = function (tweet) {
-    const $tweet = `<article class="tweets">
-  <header>
-    <div class="avatar-name">
-    <img src="${tweet.user.avatars}"
-      <p> ${tweet.user.name} </p>
-    </div>
-    <p class="handle">
-      ${tweet.user.handle}
-    </p>
-  </header>
-  <p class="tweet-content">${tweet.content.text}</p>
-  <footer>
-    <div class="logo-set">
-      <i class="fa-solid fa-font-awesome"></i>
-      <i class="fa-solid fa-retweet"></i>
-      <i class="fa-regular fa-heart"></i>
-    </div>
-  </footer>
+const createTweetElement = function (tweet) {
+  const $tweet = `<article class="tweets">
+<header>
+  <div class="avatar-name">
+  <img src="${tweet.user.avatars}"
+    <p> ${tweet.user.name} </p>
+  </div>
+  <p class="handle">
+    ${tweet.user.handle}
+  </p>
+</header>
+<p class="tweet-content">${tweet.content.text}</p>
+<footer>
+  <time class="timestamp">${jQuery.timeago(new Date)}</time>
+  <div class="logo-set">
+    <i class="fa-solid fa-font-awesome"></i>
+    <i class="fa-solid fa-retweet"></i>
+    <i class="fa-regular fa-heart"></i>
+  </div>
+</footer>
 </article>`
-    return $tweet;
+  return $tweet;
+}
+
+const renderTweets = function (tweets) {
+  // loops through tweets
+  for (let tweet of tweets) {
+    // calls createTweetElement for each tweet
+    let returnTweet = createTweetElement(tweet)
+    // takes return value and appends it to the tweets container
+    $("#tweets-container").append(returnTweet)
   }
+};
 
-  const renderTweets = function (tweets) {
-    // loops through tweets
-    for (let tweet of tweets) {
-      // calls createTweetElement for each tweet
-      let returnTweet = createTweetElement(tweet)
-      // takes return value and appends it to the tweets container
-      $("#tweets-container").append(returnTweet)
-    }
-  };
 
-  renderTweets(data);
-
+$(document).ready(function () {
+  // JQuery access to HTML to find tweet-form
+  const form = $("#tweet-form");
+  // form on is a listener and waits to hear submit
+  form.on('submit', onSubmit);
 });
+
+const onSubmit = function (event) {
+  event.preventDefault();
+  const form = $(this);
+  const data = form.serialize()
+  $.post("/tweets/", data)
+    .then(() => {
+      loadTweets()
+    })
+}
+
+const loadTweets = function () {
+  $.get("/tweets/")
+    .then(data => {
+      renderTweets(data)
+      console.log("tweet", data)
+    })
+}

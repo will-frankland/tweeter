@@ -51,8 +51,18 @@ html {
  .logo-set {
    display: flex;
    justify-content: flex-end;
-   border-top: solid;
    column-gap: 15px;
+ }
+
+ .tweet-footer {
+   display: flex;
+   justify-content: space-between;
+   border-top: solid;
+   align-items: center;
+ }
+
+ .tweet-footer .timestamp {
+  margin: 0.5rem 0;
  }
 
 
