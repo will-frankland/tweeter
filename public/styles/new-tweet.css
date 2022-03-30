@@ -10,6 +10,7 @@ html {
  */
 
  form {
+   width: 100%;
  text-align: center;
  }
 
@@ -41,8 +42,8 @@ html {
   }
 
   #tweet-text {
-    /* width: 1350px; */
-    width: 90vw;
+
+    width: 100%;
     border: none;
     background-color: transparent;
     border-bottom: solid;

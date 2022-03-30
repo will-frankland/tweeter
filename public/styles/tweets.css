@@ -8,11 +8,42 @@ html {
 /*
  * Global layout stuff
  */
-
- article {
-   text-align: center;
+ .all-tweets-section {
+   margin: 2rem 0 2rem 0;
  }
 
- header {
-   height: auto;
+ .all-tweets-section article {
+   padding: 0 1rem 1rem 1rem;
+   margin: 2rem 0 0 0;
+   border: 2px solid #48453c;
+ }
+
+ .tweets header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   /* background-color: red; */
+   height: 6rem;
+ }
+
+.avatar-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.handle {
+  display: flex;
+  justify-content: flex-end;
+}
+
+ .tweet-content {
+   align-items: flex-start;
+   align-content: flex-start;
+ }
+
+ .logo-set {
+   display: flex;
+   justify-content: flex-end;
+   border-top: solid;
  }

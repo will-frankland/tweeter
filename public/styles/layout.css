@@ -21,11 +21,17 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-.container {
+/* .container {
   display: flex;
   margin: 0 auto;
   width: 90%;
   align-items: center;
+  background-color: #f4f1ec;
+} */
+
+main {
+  height: 200px;
+  margin: 0 10% 2rem 10%;
   background-color: #f4f1ec;
 }
 
