@@ -16,3 +16,8 @@ Access is granted on port 8080.
 
 - Express
 - Node 5.10.x or above
+
+## Screenshots
+
+!["Negative character count"](https://github.com/will-frankland/tweeter/blob/master/docs/Negative%20character%20count.png?raw=true)
+!["Tweet submitted on page"](https://github.com/will-frankland/tweeter/blob/master/docs/Twitter%20clone%20with%20submitted%20tweet.png?raw=true)
