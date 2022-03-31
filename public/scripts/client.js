@@ -34,7 +34,7 @@ const renderTweets = function (tweets) {
     // calls createTweetElement for each tweet
     let returnTweet = createTweetElement(tweet)
     // takes return value and appends it to the tweets container
-    $("#tweets-container").append(returnTweet)
+    $("#tweets-container").prepend(returnTweet)
   }
 };
 
@@ -44,22 +44,32 @@ $(document).ready(function () {
   const form = $("#tweet-form");
   // form on is a listener and waits to hear submit
   form.on('submit', onSubmit);
+  loadTweets();
 });
 
 const onSubmit = function (event) {
   event.preventDefault();
   const form = $(this);
+  if ($("#tweet-text").val() === "" || $("#tweet-text").val() === null) {
+    alert("Tweet is empty!")
+    return;
+  } else if ($("#tweet-text").val().length > 140) {
+    alert("Tweet limit exceeded!")
+    return;
+  }
   const data = form.serialize()
   $.post("/tweets/", data)
     .then(() => {
       loadTweets()
+      $("textarea")[0].value = "";
     })
 }
 
 const loadTweets = function () {
   $.get("/tweets/")
     .then(data => {
+      $('.all-tweets-section').empty()
       renderTweets(data)
-      console.log("tweet", data)
+      // console.log("tweet", data)
     })
 }
