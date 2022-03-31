@@ -53,7 +53,7 @@ const onSubmit = function (event) {
   if (inputText === "" || inputText === null) {
     return $('.error-text').text('Tweet is empty!').slideDown();
   }
-  // console.log("Look for this ", test)
+
   if (inputText.length > 140) {
     return $('.error-text').text('Tweet limit exceeded!').slideDown();
   }
@@ -71,7 +71,6 @@ const loadTweets = function () {
     .then(data => {
       $('.all-tweets-section').empty()
       renderTweets(data)
-      // console.log("tweet", data)
     })
     .catch((err) => {
       console.log('An error occurred ', err);
