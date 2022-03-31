@@ -1,21 +1,16 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
 
 const createTweetElement = function (tweet) {
   const $tweet = `<article class="tweets">
 <header>
   <div class="avatar-name">
-  <img src="${tweet.user.avatars}"
-    <p> ${tweet.user.name} </p>
+  <img src="${escape(tweet.user.avatars)}"
+    <p> ${escape(tweet.user.name)} </p>
   </div>
   <p class="handle">
-    ${tweet.user.handle}
+    ${escape(tweet.user.handle)}
   </p>
 </header>
-<p class="tweet-content">${tweet.content.text}</p>
+<p class="tweet-content">${escape(tweet.content.text)}</p>
 <footer>
   <time class="timestamp">${jQuery.timeago(new Date)}</time>
   <div class="logo-set">
@@ -49,14 +44,20 @@ $(document).ready(function () {
 
 const onSubmit = function (event) {
   event.preventDefault();
+
+  // swapped if statements for 'this' relating to error.
   const form = $(this);
-  if ($("#tweet-text").val() === "" || $("#tweet-text").val() === null) {
-    alert("Tweet is empty!")
-    return;
-  } else if ($("#tweet-text").val().length > 140) {
-    alert("Tweet limit exceeded!")
-    return;
+  $('.error-text').slideUp(400).text('');
+
+  const inputText = $('#tweet-text').val();
+  if (inputText === "" || inputText === null) {
+    return $('.error-text').text('Tweet is empty!').slideDown();
   }
+  // console.log("Look for this ", test)
+  if (inputText.length > 140) {
+    return $('.error-text').text('Tweet limit exceeded!').slideDown();
+  }
+
   const data = form.serialize()
   $.post("/tweets/", data)
     .then(() => {
@@ -72,4 +73,14 @@ const loadTweets = function () {
       renderTweets(data)
       // console.log("tweet", data)
     })
+    .catch((err) => {
+      console.log('An error occurred ', err);
+    })
 }
+
+// escape function allows safe user input
+const escape = function (str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};

@@ -1,36 +1,37 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
-/*
- * Global layout stuff
- */
- .all-tweets-section {
-   margin: 2rem 0 2rem 0;
- }
 
- .all-tweets-section article {
-   padding: 0 1rem 1rem 1rem;
-   margin: 2rem 0 0 0;
-   border: 2px solid #48453c;
-   transition: box-shadow .3s;
-   box-shadow: 0 0 11px rgba(33,33,33,.2); 
 
-  }
-  .all-tweets-section:hover {
-    box-shadow: 5px 3px 5px 4px dimgrey;
-  }
+.all-tweets-section {
+  margin: 2rem 0 2rem 0;
+}
 
- .tweets header {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   /* background-color: red; */
-   height: 6rem;
- }
+.all-tweets-section article {
+  padding: 0 1rem 1rem 1rem;
+  margin: 2rem 0 0 0;
+  border: 2px solid #48453c;
+}
+
+.tweets:hover {
+  transition: box-shadow .3s;
+  box-shadow: 0 0 11px rgba(70, 70, 150, .4);
+}
+
+.tweets header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: red; */
+  height: 6rem;
+}
 
 .avatar-name {
   display: flex;
@@ -43,38 +44,38 @@ html {
   justify-content: flex-end;
 }
 
- .tweet-content {
-   align-items: flex-start;
-   align-content: flex-start;
- }
+.tweet-content {
+  align-items: flex-start;
+  align-content: flex-start;
+}
 
- .logo-set {
-   display: flex;
-   justify-content: flex-end;
-   column-gap: 15px;
- }
+.logo-set {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 15px;
+}
 
- .tweet-footer {
-   display: flex;
-   justify-content: space-between;
-   border-top: solid;
-   align-items: center;
- }
+.tweet-footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: solid;
+  align-items: center;
+}
 
- .tweet-footer .timestamp {
+.tweet-footer .timestamp {
   margin: 0.5rem 0;
- }
+}
 
 
 
- .fa-solid.fa-font-awesome:hover {
+.fa-solid.fa-font-awesome:hover {
   color: rgb(196, 196, 25);
- }
- 
- .fa-solid.fa-retweet:hover {
+}
+
+.fa-solid.fa-retweet:hover {
   color: blue;
- }
- 
- .fa-regular.fa-heart:hover {
+}
+
+.fa-regular.fa-heart:hover {
   color: red;
- }
+}

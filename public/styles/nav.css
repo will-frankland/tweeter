@@ -1,7 +1,10 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -22,18 +25,17 @@ nav {
   position: relative;
   position: fixed;
   top: 0;
- }
+}
 
- #Brand_logo {
-   font-family: 'Bungee', cursive;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-  }
+#Brand_logo {
+  font-family: 'Bungee', cursive;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
 
-  .New_Tweet_Actual {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
+.New_Tweet_Actual {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
